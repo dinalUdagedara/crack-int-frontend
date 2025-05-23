@@ -1,6 +1,7 @@
 import { getMe, login } from "@/services/auth.service";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -46,8 +47,23 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID || "",
+      clientSecret: process.env.GOOGLE_SECRET || "",
+    }),
   ],
   callbacks: {
+    async signIn({ user, account, profile }) {
+      // Handle Google sign-in
+      if (account?.provider === "google") {
+        // You can add custom logic here to handle Google users
+        // For example, check if user exists in your database
+        console.log("Google sign-in attempt:", { user, account, profile });
+        return true; // Allow sign-in
+      }
+      return true;
+    },
+
     async jwt({ token, user, trigger, session }) {
       // Initial sign in
       if (user) {
