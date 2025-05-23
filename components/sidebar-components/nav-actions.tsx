@@ -105,19 +105,19 @@ export function NavActions() {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="text-muted-foreground hidden font-medium md:inline-block">
+      <div className="text-muted-foreground hidden font-medium md:flex w-full justify-between items-center gap-3">
+        <div>Welcome {session?.user?.name}</div>
         <Button
+          variant={"outline"}
+          className=""
           onClick={() => {
             signOut();
           }}
         >
-          Sign Out {session?.user?.name}
+          Sign Out
         </Button>
-        Edit Oct 08
       </div>
-      <Button variant="ghost" size="icon" className="h-7 w-7">
-        <Star />
-      </Button>
+
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
