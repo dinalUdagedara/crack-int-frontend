@@ -1,5 +1,5 @@
 "use client";
-
+import { signOut } from "next-auth/react";
 import * as React from "react";
 import {
   ArrowDown,
@@ -12,9 +12,9 @@ import {
   GalleryVerticalEnd,
   LineChart,
   Link,
+  LogOut,
   MoreHorizontal,
   Settings2,
-  Star,
   Trash,
   Trash2,
 } from "lucide-react";
@@ -95,6 +95,11 @@ const data = [
       label: "Export",
       icon: ArrowDown,
     },
+    {
+      label: "Sign Out",
+      icon: LogOut,
+      action: () => signOut(),
+    },
   ],
 ];
 
@@ -103,12 +108,6 @@ export function NavActions() {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="text-muted-foreground hidden font-medium md:inline-block">
-        Edit Oct 08
-      </div>
-      <Button variant="ghost" size="icon" className="h-7 w-7">
-        <Star />
-      </Button>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -131,7 +130,10 @@ export function NavActions() {
                     <SidebarMenu>
                       {group.map((item, index) => (
                         <SidebarMenuItem key={index}>
-                          <SidebarMenuButton>
+                          <SidebarMenuButton
+                            onClick={item.action}
+                            className="cursor-pointer"
+                          >
                             <item.icon /> <span>{item.label}</span>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
