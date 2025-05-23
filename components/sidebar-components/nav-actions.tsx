@@ -13,9 +13,9 @@ import {
   GalleryVerticalEnd,
   LineChart,
   Link,
+  LogOut,
   MoreHorizontal,
   Settings2,
-  Star,
   Trash,
   Trash2,
 } from "lucide-react";
@@ -96,6 +96,11 @@ const data = [
       label: "Export",
       icon: ArrowDown,
     },
+    {
+      label: "Sign Out",
+      icon: LogOut,
+      action: () => signOut(),
+    },
   ],
 ];
 
@@ -106,16 +111,7 @@ export function NavActions() {
   return (
     <div className="flex items-center gap-2 text-sm">
       <div className="text-muted-foreground hidden font-medium md:flex w-full justify-between items-center gap-3">
-        <div>Welcome {session?.user?.name}</div>
-        <Button
-          variant={"outline"}
-          className=""
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Sign Out
-        </Button>
+        <div>Logged in as {session?.user?.name}</div>
       </div>
 
       <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -140,7 +136,10 @@ export function NavActions() {
                     <SidebarMenu>
                       {group.map((item, index) => (
                         <SidebarMenuItem key={index}>
-                          <SidebarMenuButton>
+                          <SidebarMenuButton
+                            onClick={item.action}
+                            className="cursor-pointer"
+                          >
                             <item.icon /> <span>{item.label}</span>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
