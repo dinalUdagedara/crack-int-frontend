@@ -1,6 +1,5 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
-
+import { signOut } from "next-auth/react";
 import * as React from "react";
 import {
   ArrowDown,
@@ -106,14 +105,9 @@ const data = [
 
 export function NavActions() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const { data: session } = useSession();
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="text-muted-foreground hidden font-medium md:flex w-full justify-between items-center gap-3">
-        <div>Logged in as {session?.user?.name}</div>
-      </div>
-
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
