@@ -1,11 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
-  AudioWaveform,
   Blocks,
   Calendar,
-  Command,
   Home,
   Inbox,
   MessageCircleQuestion,
@@ -13,39 +11,22 @@ import {
   Settings2,
   Sparkles,
   Trash2,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavFavorites } from "@/components/sidebar-components/nav-favorites"
-import { NavMain } from "@/components/sidebar-components/nav-main"
-import { NavSecondary } from "@/components/sidebar-components/nav-secondary"
-import { NavWorkspaces } from "@/components/sidebar-components/nav-workspaces"
-import { TeamSwitcher } from "@/components/sidebar-components/team-switcher"
+import { NavFavorites } from "@/components/sidebar-components/nav-favorites";
+import { NavMain } from "@/components/sidebar-components/nav-main";
+import { NavSecondary } from "@/components/sidebar-components/nav-secondary";
+import { NavWorkspaces } from "@/components/sidebar-components/nav-workspaces";
+import { UserAuth } from "@/components/sidebar-components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // This is sample data.
 const data = {
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: Command,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Search",
@@ -256,13 +237,13 @@ const data = {
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <UserAuth />
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
@@ -272,5 +253,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

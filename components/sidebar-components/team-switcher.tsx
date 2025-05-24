@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronDown, Plus } from "lucide-react";
+import { ChevronDown, LogOut, Plus } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -20,21 +20,8 @@ import {
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-export function TeamSwitcher({
-  teams,
-}: {
-  teams: {
-    name: string;
-    logo: React.ElementType;
-    plan: string;
-  }[];
-}) {
-  const [activeTeam, setActiveTeam] = React.useState(teams[0]);
+export function UserAuth() {
   const { data: session } = useSession();
-
-  if (!activeTeam) {
-    return null;
-  }
 
   return (
     <SidebarMenu>
@@ -66,7 +53,7 @@ export function TeamSwitcher({
             side="bottom"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="text-muted-foreground text-xs">
+            {/* <DropdownMenuLabel className="text-muted-foreground text-xs">
               Teams
             </DropdownMenuLabel>
             {teams.map((team, index) => (
@@ -82,12 +69,12 @@ export function TeamSwitcher({
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator /> */}
             <DropdownMenuItem className="gap-2 p-2">
-              <div className="bg-background flex size-6 items-center justify-center rounded-md border">
-                <Plus className="size-4" />
-              </div>
-              <div className="text-muted-foreground font-medium">Add team</div>
+              <SidebarMenuButton className="w-full">
+                <LogOut />
+                Log Out
+              </SidebarMenuButton>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
