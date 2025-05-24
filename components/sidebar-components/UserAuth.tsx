@@ -27,13 +27,13 @@ export function UserAuth() {
           <DropdownMenuTrigger asChild className="w-full">
             <SidebarMenuButton className="w-full px-1.5 justify-between py-5">
               <div className="flex items-center gap-2">
-                <div className="flex size-5 items-center justify-center rounded-md overflow-hidden">
+                <div className="flex  items-center justify-center rounded-full overflow-">
                   <Image
                     alt="user-image"
                     src={session?.user?.image || "/user-default.jpg"}
-                    width={20}
-                    height={20}
-                    className="rounded-md object-cover"
+                    width={30}
+                    height={3}
+                    className="rounded-full object-cover"
                   />
                 </div>
                 <span className="truncate font-medium">
