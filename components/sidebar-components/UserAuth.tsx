@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
 
 export function UserAuth() {
   const { data: session } = useSession();
+  console.log({ session });
 
   return (
     <SidebarMenu>
@@ -66,7 +68,12 @@ export function UserAuth() {
             ))}
             <DropdownMenuSeparator /> */}
             <DropdownMenuItem className="gap-2 p-2">
-              <SidebarMenuButton className="w-full">
+              <SidebarMenuButton
+                className="w-full"
+                onClick={() => {
+                  signOut();
+                }}
+              >
                 <LogOut />
                 Log Out
               </SidebarMenuButton>
