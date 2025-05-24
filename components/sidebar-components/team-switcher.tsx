@@ -1,15 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { ChevronDown, LogOut, Plus } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
