@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   Blocks,
@@ -12,12 +11,11 @@ import {
   Sparkles,
   Trash2,
 } from "lucide-react";
-
 import { NavFavorites } from "@/components/sidebar-components/nav-favorites";
 import { NavMain } from "@/components/sidebar-components/nav-main";
 import { NavSecondary } from "@/components/sidebar-components/nav-secondary";
 import { NavWorkspaces } from "@/components/sidebar-components/nav-workspaces";
-import { UserAuth } from "@/components/sidebar-components/team-switcher";
+import { UserAuth } from "@/components/sidebar-components/UserAuth";
 import {
   Sidebar,
   SidebarContent,
