@@ -18,8 +18,7 @@ import { signOut } from "next-auth/react";
 
 export function UserAuth() {
   const { data: session } = useSession();
-  console.log({ session });
-
+  
   return (
     <SidebarMenu>
       <SidebarMenuItem>
